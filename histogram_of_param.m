@@ -1,9 +1,9 @@
 function p = histogram_of_param(varargin)
 
   if nargin == 1
-    h = figure;
+    % h = figure;
     [n, edges] = histcounts(log10(varargin{1}));
-    p = histogram(varargin{1}, 10.^edges), 'Normalization', 'countdensity';
+    p = histogram(varargin{1}, 10.^edges, 'Normalization', 'probability');
     set(gca, 'XScale', 'log');
   else
     [~, edges] = histcounts(log10(varargin{2}));
