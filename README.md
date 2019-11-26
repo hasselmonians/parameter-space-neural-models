@@ -137,3 +137,13 @@ Therefore, there are 400,000 intrinsic parameters and 300,000,001 synaptic param
 ## Hill *et al.* 2001
 
 8 neurons, 88 intrinsic parameters, 33 synaptic parameters.
+
+## Bartos *et al.* 2002
+
+200 neurons, single-compartment, with Hodgkin-Huxley conductances.
+1003 intrinsic parameters, 21,600 synapses.
+
+## Wang & Buzsaki 1996
+
+100 neurons, single-compartment, with Hodgkin-Huxley conductances.
+503 intrinsic parameters, 9,900 synapses.
