@@ -32,6 +32,8 @@ with an axon added.
 It contains 183 compartments.
 The number of synapses was varied from 2 to 28.
 
+2,756 intrinsic parameters plus 32 synaptic parameters.
+
 ## Izhikevich 2003
 
 The neurons here are a reduced Hodgkin-Huxley model with two state variables
@@ -41,9 +43,9 @@ There are four parameters per cell.
 Izhikevich simulates a sparse network of 10,000 cells with 1,000,000 synaptic connections.
 Synapses are instantaneous, with no state variables, but each synapse has a synaptic weight parameter.
 
-## Rumelhart *et al.* 1986
+<!-- ## Rumelhart *et al.* 1986
 
-Paper on backpropagation algorithm for ANNs.
+Paper on backpropagation algorithm for ANNs. -->
 
 ## Hasselmo, Schnell, & Barkai 1995
 
@@ -87,3 +89,51 @@ The following networks were tested:
 
 CA1 pyramidal model (183 compartments) with 17 types of voltage-dependent ion channels.
 > This is really quite cool. I need to look into this further.
+
+## Sadeh *et al.*  2017
+
+9 parameters in the spiking neuron model (exponential integrate and fire), 8 spiking network parameters,
+1600 excitatory cells, 400 inhibitory cells.
+1,280 synapses on average with the same number of parameters (synaptic weight).
+
+## Traub *et al.* 2005
+
+The model includes 14 neuron types with 74, 74, 59, 59, 59, 59, 61, 61, 50, 59, 59,
+59, 137, and 59 compartments. There are 3,560 neurons total and 229,940 compartments.
+
+
+There are 11 conductances in each compartment.
+The neuron reconstruction has a specific membrane capacitance, diameter, and length for each compartment.
+Each compartment must also have a calcium buffering mechanism.
+Therefore, the number of intrinsic parameters is 3,679,051.
+This is a 6 layer model.
+
+There are 2 synapse types, for 2 more synaptic parameters, plus synaptic weights.
+There are 148,020 synapses from superficial RS pyramidal cells.
+There are 11,755 synapses from superficial FRB pyramidal cells.
+There are 31,200 synapses from superficial basket cells.
+There are 23,550 synapses from superficial axoaxonic cells.
+There are 69,300 synapses from superficial LTS interneurons.
+There are 74,100 synapses from spiny stellate cells.
+There are 53,100 synapses from tufted IB pyramidal cells.
+...
+There are about 500,000 synapses.
+
+## Potjans & Diesmann 2014
+
+4 layer model with 80,000 cells, 300,000,000 synapses.
+Leaky integrate-and-fire model with 5 parameters each.
+The synapse model is current-based, with a decay constant and a synaptic weight.
+Therefore, there are 400,000 intrinsic parameters and 300,000,001 synaptic parameters.
+
+## Nadim *et al.* 1998
+
+3 neurons, 9 compartments, 38 parameters, 7 synaptic parameters.
+
+## Lytton *et al.* 1997
+
+2 neurons, 20 intrinsic parameters, 8 synaptic parameters.
+
+## Hill *et al.* 2001
+
+8 neurons, 88 intrinsic parameters, 33 synaptic parameters.
