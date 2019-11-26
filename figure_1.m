@@ -42,7 +42,7 @@ histogram_of_param(cosci.nLayers);
 xlabel('# of layers')
 legend({'Neuro', 'CoSci'}, 'Location', 'best')
 
-return
+% return
 
 %% Plot pairwise scatter plots
 
@@ -57,6 +57,7 @@ for ii = 1:length(combns)
   ylabel(paramNames(combns(ii, 2)));
   set(gca, 'YScale', 'log');
   set(gca, 'XScale', 'log');
+  figlib.pretty('PlotBuffer', 0.1);
   axis square
 end
 
@@ -65,16 +66,18 @@ end
 
 paramNames = {'# of synaptic parameters', '# of neurons', '# of layers'};
 paramMatrixNeuro = [neuro.nSynapticParams; neuro.nNeurons; neuro.nLayers];
-paramMatrixCoSci = [cosci.nSynapticParams; cosci.nNeurons; cosci.nLayers];
+paramMatrixCoSci = [cosci.nParams; cosci.nNeurons; cosci.nLayers];
 combns = nchoosek(1:3, 2);
 
 for ii = 1:length(combns)
-  figure;
+  figure; hold on;
   scatter(paramMatrixNeuro(combns(ii, 1), :), paramMatrixNeuro(combns(ii, 2), :));
   scatter(paramMatrixCoSci(combns(ii, 1), :), paramMatrixCoSci(combns(ii, 2), :));
   xlabel(paramNames(combns(ii, 1)));
   ylabel(paramNames(combns(ii, 2)));
   set(gca, 'YScale', 'log');
   set(gca, 'XScale', 'log');
+  legend({'Neuro', 'CoSci'}, 'Location', 'best')
   axis square
+  figlib.pretty('PlotBuffer', 0.1)
 end
