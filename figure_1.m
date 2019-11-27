@@ -44,14 +44,11 @@ legend({'Neuro', 'CoSci'}, 'Location', 'best')
 
 % return
 
-% I think what I would most like to see is a plot of "number of neurons" versus "number of intrinsic parameter PER neuron" .
-% Or "number of layers" versus number of intrinsic parameters.
-
 %% Plot # of neurons vs. # of intrinsic parameters per neuron
 
 figure; hold on
-scatter(neuro.nNeurons, y1);
-scatter(cosci.nNeurons, y2);
+scatter(neuro.nNeurons, neuro.nIntrinsicParams ./ neuro.nNeurons)
+scatter(cosci.nNeurons, cosci.nLayers ./ cosci.nNeurons)
 xlabel('# of neurons')
 ylabel('# of intrinsic parameters per neuron')
 set(gca, 'XScale', 'log')
