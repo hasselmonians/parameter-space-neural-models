@@ -44,12 +44,56 @@ legend({'Neuro', 'CoSci'}, 'Location', 'best')
 
 % return
 
+% I think what I would most like to see is a plot of "number of neurons" versus "number of intrinsic parameter PER neuron" .
+% Or "number of layers" versus number of intrinsic parameters.
+
+%% Plot # of neurons vs. # of intrinsic parameters per neuron
+
+figure; hold on
+scatter(neuro.nNeurons, y1);
+scatter(cosci.nNeurons, y2);
+xlabel('# of neurons')
+ylabel('# of intrinsic parameters per neuron')
+set(gca, 'XScale', 'log')
+set(gca, 'YScale', 'log')
+legend({'Neuro', 'CoSci'}, 'Location', 'NorthEastOutside')
+figlib.pretty('PlotBuffer', 0.2, 'AxisBox', 'on')
+xlim([0 1e6])
+ylim([0 1e6])
+axis square
+
+% return
+%% Plot # of layers vs. # of intrinsic parameters
+
+figure; hold on
+scatter(neuro.nLayers, neuro.nIntrinsicParams ./ neuro.nNeurons)
+scatter(cosci.nLayers, cosci.nLayers ./ cosci.nNeurons)
+xlabel('# of layers')
+ylabel('# of intrinsic parameters per neuron')
+% set(gca, 'XScale', 'log')
+set(gca, 'YScale', 'log')
+legend({'Neuro', 'CoSci'}, 'Location', 'NorthEastOutside')
+figlib.pretty('PlotBuffer', 0.2)
+% xlim([0 1e6])
+ylim([0 1e6])
+axis square
+
+return
+
 %% Plot pairwise scatter plots
 
 paramNames = {'# of intrinsic parameters', '# of synaptic parameters', '# of compartments', '# of neurons'};
 paramMatrix = [neuro.nIntrinsicParams; neuro.nSynapticParams; neuro.nCompartments; neuro.nNeurons];
 combns = nchoosek(1:4, 2);
-
+figure; hold on
+scatter(neuro.nNeurons, neuro.nIntrinsicParams ./ neuro.nNeurons)
+scatter(cosci.nNeurons, cosci.nParams ./ cosci.nNeurons)
+xlabel('# of neurons')
+ylabel('# of parameters per neuron')
+set(gca, 'XScale', 'log')
+set(gca, 'YScale', 'log')
+figlib.pretty('PlotBuffer', 0.1);
+axis square
 for ii = 1:length(combns)
   figure;
   scatter(paramMatrix(combns(ii, 1), :), paramMatrix(combns(ii, 2), :));
