@@ -58,6 +58,7 @@ cosci.paperName = {'krizhevskyImageNetClassificationDeep2017', ...
                   'heDeepResidualLearning2015 101', ...
                   'heDeepResidualLearning2015 152'};
 
-cosci.nParams           = [60e6, 133e6, 133e6, 134e6, 138e6, 144e6, 10e6, 20e6, 25.6e6, 44.5e6, 60.2e6];
+cosci.nSynapticParams   = [60e6, 133e6, 133e6, 134e6, 138e6, 144e6, 10e6, 20e6, 25.6e6, 44.5e6, 60.2e6];
 cosci.nLayers           = [8, 11, 13, 16, 16, 19, 18, 34, 50, 101, 152];
 cosci.nNeurons          = [594376, 11944, 12136, 13416, 14696, 15976, 4650, 7616, 22720, 48832, 72256];
+cosci.nIntrinsicParams  = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3] .* cosci.nNeurons;
