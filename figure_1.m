@@ -60,6 +60,8 @@ legend({'Neuro', 'CoSci'}, 'Location', 'NorthEastOutside')
 figlib.pretty('PlotBuffer', 0.2, 'AxisBox', 'on')
 xlim([0 1e6])
 ylim([0 1e6])
+% text([neuro.nNeurons] + 1, [neuro.nIntrinsicParams] ./ [neuro.nNeurons] + 0.1, ...
+    % cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', 'b');
 axis square
 
 %% Plot # of layers vs. # of intrinsic parameters
