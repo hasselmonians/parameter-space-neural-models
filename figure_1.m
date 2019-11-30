@@ -7,50 +7,50 @@ neuro_cosci_review_data;
 
 % intrinsic parameters
 figure
-histogram_of_param(neuro.nIntrinsicParams);
+histogram_of_param([neuro.nIntrinsicParams]);
 hold on;
 ax = gca;
-histogram_of_param(cosci.nIntrinsicParams);
+histogram_of_param([cosci.nIntrinsicParams]);
 xlabel('# of intrinsic parameters')
 legend({'Neuro', 'CoSci'}, 'Location', 'best')
 
 % synaptic parameters
 figure
-histogram_of_param(neuro.nSynapticParams);
+histogram_of_param([neuro.nSynapticParams]);
 hold on;
 ax = gca;
-histogram_of_param(cosci.nSynapticParams);
+histogram_of_param([cosci.nSynapticParams]);
 xlabel('# of synaptic parameters')
 legend({'Neuro', 'CoSci'}, 'Location', 'best')
 
 % compartments
 figure
-histogram_of_param(neuro.nCompartments);
+histogram_of_param([neuro.nCompartments]);
 xlabel('# of compartments')
 
 % neurons
 figure
-histogram_of_param(neuro.nNeurons);
+histogram_of_param([neuro.nNeurons]);
 hold on;
 ax = gca;
-histogram_of_param(cosci.nNeurons);
+histogram_of_param([cosci.nNeurons]);
 xlabel('# of neurons')
 legend({'Neuro', 'CoSci'}, 'Location', 'best')
 
 % layers
 figure
-histogram_of_param(neuro.nLayers);
+histogram_of_param([neuro.nLayers]);
 hold on;
 ax = gca;
-histogram_of_param(cosci.nLayers);
+histogram_of_param([cosci.nLayers]);
 xlabel('# of layers')
 legend({'Neuro', 'CoSci'}, 'Location', 'best')
 
 %% Plot # of neurons vs. # of intrinsic parameters per neuron
 
 figure; hold on
-scatter(neuro.nNeurons, neuro.nIntrinsicParams ./ neuro.nNeurons)
-scatter(cosci.nNeurons, cosci.nLayers ./ cosci.nNeurons)
+scatter([neuro.nNeurons], [neuro.nIntrinsicParams] ./ [neuro.nNeurons])
+scatter([cosci.nNeurons], [cosci.nLayers] ./ [cosci.nNeurons])
 xlabel('# of neurons')
 % ylabel('# of intrinsic parameters per neuron')
 ylabel({'# of intrinsic parameters', 'per neuron'})
@@ -65,8 +65,8 @@ axis square
 %% Plot # of layers vs. # of intrinsic parameters
 
 figure; hold on
-scatter(neuro.nLayers, neuro.nIntrinsicParams ./ neuro.nNeurons)
-scatter(cosci.nLayers, cosci.nIntrinsicParams ./ cosci.nNeurons)
+scatter([neuro.nLayers], [neuro.nIntrinsicParams] ./ [neuro.nNeurons])
+scatter([cosci.nLayers], [cosci.nIntrinsicParams] ./ [cosci.nNeurons])
 xlabel('# of layers')
 % ylabel('# of intrinsic parameters per neuron')
 ylabel({'# of intrinsic parameters', 'per neuron'})
@@ -81,8 +81,8 @@ axis square
 
 %% Plot # of synaptic parameters vs. # of intrinsic parameters per neuron
 figure; hold on;
-scatter(neuro.nSynapticParams, neuro.nIntrinsicParams ./ neuro.nNeurons);
-scatter(cosci.nSynapticParams, cosci.nIntrinsicParams ./ cosci.nNeurons);
+scatter([neuro.nSynapticParams], [neuro.nIntrinsicParams] ./ [neuro.nNeurons]);
+scatter([cosci.nSynapticParams], [cosci.nIntrinsicParams ]./ [cosci.nNeurons]);
 xlabel('# of synaptic parameters')
 ylabel('# of intrinsic parameters per neuron')
 set(gca, 'XScale', 'log')
@@ -111,20 +111,22 @@ axis square
 
 %% Plot pairwise scatter plots with neuro and cosci models
 
-paramNames = {'# of synaptic parameters', '# of neurons', '# of layers'};
-paramMatrixNeuro = [neuro.nIntrinsicParams; neuro.nSynapticParams; neuro.nNeurons; neuro.nLayers];
-paramMatrixCoSci = [cosci.nIntrinsicParams; cosci.nSynapticParams; cosci.nNeurons; cosci.nLayers];
-combns = nchoosek(1:3, 2);
+return
 
-for ii = 1:length(combns)
-  figure; hold on;
-  scatter(paramMatrixNeuro(combns(ii, 1), :), paramMatrixNeuro(combns(ii, 2), :));
-  scatter(paramMatrixCoSci(combns(ii, 1), :), paramMatrixCoSci(combns(ii, 2), :));
-  xlabel(paramNames(combns(ii, 1)));
-  ylabel(paramNames(combns(ii, 2)));
-  set(gca, 'YScale', 'log');
-  set(gca, 'XScale', 'log');
-  legend({'Neuro', 'CoSci'}, 'Location', 'best')
-  axis square
-  figlib.pretty('PlotBuffer', 0.1)
-end
+% paramNames = {'# of synaptic parameters', '# of neurons', '# of layers'};
+% paramMatrixNeuro = [neuro.nIntrinsicParams; neuro.nSynapticParams; neuro.nNeurons; neuro.nLayers];
+% paramMatrixCoSci = [cosci.nIntrinsicParams; cosci.nSynapticParams; cosci.nNeurons; cosci.nLayers];
+% combns = nchoosek(1:3, 2);
+%
+% for ii = 1:length(combns)
+%   figure; hold on;
+%   scatter(paramMatrixNeuro(combns(ii, 1), :), paramMatrixNeuro(combns(ii, 2), :));
+%   scatter(paramMatrixCoSci(combns(ii, 1), :), paramMatrixCoSci(combns(ii, 2), :));
+%   xlabel(paramNames(combns(ii, 1)));
+%   ylabel(paramNames(combns(ii, 2)));
+%   set(gca, 'YScale', 'log');
+%   set(gca, 'XScale', 'log');
+%   legend({'Neuro', 'CoSci'}, 'Location', 'best')
+%   axis square
+%   figlib.pretty('PlotBuffer', 0.1)
+% end
