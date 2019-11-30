@@ -74,8 +74,9 @@ ylabel({'# of intrinsic parameters', 'per neuron'})
 set(gca, 'YScale', 'log')
 legend({'Neuro', 'CoSci'}, 'Location', 'NorthEastOutside')
 figlib.pretty('PlotBuffer', 0.2)
-% xlim([0 1e6])
-ylim([0 1e6])
+xlim([-11.8889 158.1111])
+ylim([1.0644 3.5480e+05])
+yticks([10 100 1000 10000 100000])
 axis square
 
 %% Plot # of synaptic parameters vs. # of intrinsic parameters per neuron
