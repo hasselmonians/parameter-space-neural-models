@@ -75,9 +75,9 @@ axis square
 
 % annotate with labels for each point
 text([neuro.nNeurons] + dx, [neuro.nIntrinsicParams] ./ [neuro.nNeurons] + dy, ...
-  cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', k);
+  cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', 'k');
 text([cosci.nNeurons] + dx, [cosci.nIntrinsicParams] ./ [cosci.nNeurons] + dy, ...
-  cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', k);
+  cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', 'k');
 
 %% Plot # of layers vs. # of intrinsic parameters
 
@@ -99,9 +99,9 @@ axis square
 
 % annotate with labels for each point
 text([neuro.nLayers] + dx, [neuro.nIntrinsicParams] ./ [neuro.nNeurons] + dy, ...
-  cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', k);
+  cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', 'k');
 text([cosci.nLayers] + dx, [cosci.nIntrinsicParams] ./ [cosci.nNeurons] + dy, ...
-  cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', k);
+  cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', 'k');
 
 %% Plot # of synaptic parameters vs. # of intrinsic parameters per neuron
 
@@ -121,9 +121,9 @@ axis square
 
 % annotate with labels for each point
 text([neuro.nSynapticParams] + dx, [neuro.nIntrinsicParams] ./ [neuro.nNeurons] + dy, ...
-  cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', k);
+  cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', 'k');
 text([cosci.nSynapticParams] + dx, [cosci.nIntrinsicParams] ./ [cosci.nNeurons] + dy, ...
-  cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', k);
+  cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', 'k');
 
 return
 
