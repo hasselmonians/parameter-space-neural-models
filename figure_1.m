@@ -108,8 +108,8 @@ text([cosci.nLayers] + dx, [cosci.nIntrinsicParams] ./ [cosci.nNeurons] + dy, ..
 % generate the figure
 figure; hold on;
 % plot the data points in a scatter plot
-scatter([neuro.nSynapticParams], [neuro.nIntrinsicParams] ./ [neuro.nNeurons]);
-scatter([cosci.nSynapticParams], [cosci.nIntrinsicParams ]./ [cosci.nNeurons]);
+scatter([neuro.nSynapticParams], [neuro.nIntrinsicParams] ./ [neuro.nNeurons], 'ko');
+scatter([cosci.nSynapticParams], [cosci.nIntrinsicParams ]./ [cosci.nNeurons], 'kx');
 
 xlabel('# of synaptic parameters')
 ylabel('# of intrinsic parameters per neuron')
