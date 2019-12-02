@@ -44,6 +44,7 @@ nNeurons          = [2, 2, 5, 5, 5, 5, 100, 100, 400, 1600, 1, 10000, ...
                   2, 1, 2, 2, 100, 2000, 3560, 80000, 3, 2, 8, 200, 100, 31375];
 nLayers           = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
                    1, 1, 1, 1, 1, 1, 6, 1, 1, 1, 1, 1, 1, 6];
+labels            = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 5, 5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 for ii = 1:length(paperName)
       neuro(ii).paperName = paperName(ii);
@@ -52,6 +53,7 @@ for ii = 1:length(paperName)
       neuro(ii).nCompartments = nCompartments(ii);
       neuro(ii).nNeurons = nNeurons(ii);
       neuro(ii).nLayers = nLayers(ii);
+      neuro(ii).label = labels(ii);
 end
 
 %% Hardcode the data from computer science papers
@@ -72,6 +74,7 @@ nSynapticParams   = [60e6, 133e6, 133e6, 134e6, 138e6, 144e6, 10e6, 20e6, 25.6e6
 nLayers           = [8, 11, 13, 16, 16, 19, 18, 34, 50, 101, 152];
 nNeurons          = [594376, 11944, 12136, 13416, 14696, 15976, 4650, 7616, 22720, 48832, 72256];
 nIntrinsicParams  = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3];
+labels            = [15, 16, 16, 16, 16, 16, 17, 17, 17, 17, 17];
 
 
 for ii = 1:length(paperName)
@@ -80,4 +83,5 @@ for ii = 1:length(paperName)
       cosci(ii).nIntrinsicParams = nIntrinsicParams(ii) .* nNeurons(ii);
       cosci(ii).nNeurons = nNeurons(ii);
       cosci(ii).nLayers = nLayers(ii);
+      cosci(ii).label = labels(ii);
 end
