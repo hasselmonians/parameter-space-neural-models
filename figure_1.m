@@ -46,46 +46,54 @@ neuro_cosci_review_data;
 % xlabel('# of layers')
 % legend({'Neuro', 'CoSci'}, 'Location', 'best')
 %
-%% Plot # of neurons vs. # of intrinsic parameters per neuron
 
-
-%% NOTE: each plot should have dots and numbers
-% one number for each dot, e.g. 1-10 are Destexhe et al. 1994
-
-% offsets from the data points (used for annotations)
-dx = 1;
-dy = 1;
-
-% generate the figure
-figure; hold on
-
-% plot the data points in a scatter plot
-scatter([neuro.nNeurons], [neuro.nIntrinsicParams] ./ [neuro.nNeurons], 'ko')
-scatter([cosci.nNeurons], [cosci.nLayers] ./ [cosci.nNeurons], 'kx')
-
-xlabel('# of neurons')
-ylabel({'# of intrinsic parameters', 'per neuron'})
-set(gca, 'XScale', 'log')
-set(gca, 'YScale', 'log')
-legend({'Neuro', 'CoSci'}, 'Location', 'NorthEastOutside')
-figlib.pretty('PlotBuffer', 0.2, 'AxisBox', 'on')
-xlim([0 1e6])
-ylim([0 1e6])
-axis square
+% which models are neuroscience models?
+isNeuro = false(1, length(neuro) + length(cosci));
+isNeuro(1:length(neuro)) = true;
+%
+% %% Plot # of neurons vs. # of intrinsic parameters per neuron
+%
+% % generate the figure
+% figure; hold on
+%
+% % plot the data points in a scatter plot
+% xdata = [neuro.nNeurons, cosci.nNeurons];
+% ydata = [neuro.nIntrinsicParams, cosci.nIntrinsicParams] ./ xdata;
+%
+% scatter(xdata(isNeuro), ydata(isNeuro), 'ko');
+% scatter(xdata(~isNeuro), ydata(~isNeuro), 'kx');
+%
+% xlabel('# of neurons')
+% ylabel({'# of intrinsic parameters', 'per neuron'})
+% set(gca, 'XScale', 'log')
+% set(gca, 'YScale', 'log')
+% legend({'Neuro', 'CoSci'}, 'Location', 'NorthEastOutside')
+% figlib.pretty('PlotBuffer', 0.2, 'AxisBox', 'on')
+% xlim([0 1e6])
+% ylim([0 1e6])
+% axis square
 
 % annotate with labels for each point
-text([neuro.nNeurons] + dx, [neuro.nIntrinsicParams] ./ [neuro.nNeurons] + dy, ...
-  cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', 'k');
-text([cosci.nNeurons] + dx, [cosci.nIntrinsicParams] ./ [cosci.nNeurons] + dy, ...
-  cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', 'k');
+% text([neuro.nNeurons] + dx, [neuro.nIntrinsicParams] ./ [neuro.nNeurons] + dy, ...
+%   cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', 'k');
+% text([cosci.nNeurons] + dx, [cosci.nIntrinsicParams] ./ [cosci.nNeurons] + dy, ...
+%   cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', 'k');
+%
+% labelpoints(xdata, ydata, cellstr(num2str([1:length(xdata)]')), ...
+%   'position', 'NW', 'adjust_axes', 1, 'FontSize', 10, 'Color', 'k');
+
+% return
 
 %% Plot # of layers vs. # of intrinsic parameters
 
 % generate the figure
 figure; hold on
 % plot the data points in a scatter plot
-scatter([neuro.nLayers], [neuro.nIntrinsicParams] ./ [neuro.nNeurons], 'ko')
-scatter([cosci.nLayers], [cosci.nIntrinsicParams] ./ [cosci.nNeurons], 'kx')
+xdata = [neuro.nLayers, cosci.nLayers];
+ydata = [neuro.nIntrinsicParams, cosci.nIntrinsicParams] ./ [neuro.nNeurons, cosci.nNeurons];
+
+scatter(xdata(isNeuro), ydata(isNeuro), 'ko');
+scatter(xdata(~isNeuro), ydata(~isNeuro), 'kx');
 
 xlabel('# of layers')
 ylabel({'# of intrinsic parameters', 'per neuron'})
@@ -98,18 +106,33 @@ yticks([10 100 1000 10000 100000])
 axis square
 
 % annotate with labels for each point
-text([neuro.nLayers] + dx, [neuro.nIntrinsicParams] ./ [neuro.nNeurons] + dy, ...
-  cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', 'k');
-text([cosci.nLayers] + dx, [cosci.nIntrinsicParams] ./ [cosci.nNeurons] + dy, ...
-  cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', 'k');
+% text([neuro.nLayers] + dx, [neuro.nIntrinsicParams] ./ [neuro.nNeurons] + dy, ...
+%   cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', 'k');
+% text([cosci.nLayers] + dx, [cosci.nIntrinsicParams] ./ [cosci.nNeurons] + dy, ...
+%   cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', 'k');
+
+% which points are too close
+% isTooClose = [7, 8, 9, 10, 22, 1, 2, 3, 4, 5, 6, 10, 24, 25, 30, 31, 17, 18, 27, 28, 29];
+% label_x = xdata; label_x(isTooClose) = [];
+% label_y = ydata; label_y(isTooClose) = [];
+% these_labels = 1:length(xdata); these_labels(isTooClose) = [];
+
+labelpoints(xdata, ydata, cellstr(num2str([1:length(xdata)]')), ...
+  'position', 'NE', 'adjust_axes', 1, 'FontSize', 10, 'Color', 'k');
+
+% return
 
 %% Plot # of synaptic parameters vs. # of intrinsic parameters per neuron
 
 % generate the figure
 figure; hold on;
+
 % plot the data points in a scatter plot
-scatter([neuro.nSynapticParams], [neuro.nIntrinsicParams] ./ [neuro.nNeurons], 'ko');
-scatter([cosci.nSynapticParams], [cosci.nIntrinsicParams ]./ [cosci.nNeurons], 'kx');
+xdata = [neuro.nSynapticParams, cosci.nSynapticParams];
+ydata = [neuro.nIntrinsicParams, cosci.nIntrinsicParams] ./ [neuro.nNeurons, cosci.nNeurons];
+
+scatter(xdata(isNeuro), ydata(isNeuro), 'ko');
+scatter(xdata(~isNeuro), ydata(~isNeuro), 'kx');
 
 xlabel('# of synaptic parameters')
 ylabel('# of intrinsic parameters per neuron')
@@ -120,10 +143,13 @@ figlib.pretty('PlotBuffer', 0.2)
 axis square
 
 % annotate with labels for each point
-text([neuro.nSynapticParams] + dx, [neuro.nIntrinsicParams] ./ [neuro.nNeurons] + dy, ...
-  cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', 'k');
-text([cosci.nSynapticParams] + dx, [cosci.nIntrinsicParams] ./ [cosci.nNeurons] + dy, ...
-  cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', 'k');
+% text([neuro.nSynapticParams] + dx, [neuro.nIntrinsicParams] ./ [neuro.nNeurons] + dy, ...
+%   cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', 'k');
+% text([cosci.nSynapticParams] + dx, [cosci.nIntrinsicParams] ./ [cosci.nNeurons] + dy, ...
+%   cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', 'k');
+
+labelpoints(xdata, ydata, cellstr(num2str([1:length(xdata)]')), ...
+  'position', 'E', 'adjust_axes', 1, 'FontSize', 10, 'Color', 'k');
 
 return
 
