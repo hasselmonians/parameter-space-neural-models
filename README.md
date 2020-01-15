@@ -1,6 +1,8 @@
 # parameter-space-neural-models
 Exploring the parameter spaces of neural models
 
+See a PDF writeup [here](https://github.com/hasselmonians/parameter-space-neural-models/blob/master/review-paper/paper.pdf).
+
 ## Destexhe *et al.* 1994
 Reticular thalamus (RE) cells were connected with GABAergic synapses of the A or B subtypes.
 Neurons were arrayed on a 2-dimensional lattice.
