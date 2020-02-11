@@ -68,7 +68,7 @@ isNeuro(1:length(neuro)) = true;
 % set(gca, 'XScale', 'log')
 % set(gca, 'YScale', 'log')
 % legend({'Neuro', 'CoSci'}, 'Location', 'NorthEastOutside')
-% figlib.pretty('PlotBuffer', 0.2, 'AxisBox', 'on')
+% figlib.pretty('FontSize', 24, 'PlotBuffer', 0.2, 'AxisBox', 'on')
 % xlim([0 1e6])
 % ylim([0 1e6])
 % axis square
@@ -99,7 +99,7 @@ xlabel('# of layers')
 ylabel({'# of intrinsic parameters', 'per neuron'})
 set(gca, 'YScale', 'log')
 legend({'Neuro', 'CoSci'}, 'Location', 'NorthEastOutside')
-figlib.pretty('PlotBuffer', 0.2)
+figlib.pretty('FontSize', 24, 'PlotBuffer', 0.2)
 xlim([-11.8889 158.1111])
 ylim([1.0644 3.5480e+05])
 yticks([10 100 1000 10000 100000])
@@ -118,7 +118,7 @@ axis square
 % these_labels = 1:length(xdata); these_labels(isTooClose) = [];
 
 labelpoints(xdata, ydata, cellstr(num2str([1:length(xdata)]')), ...
-  'position', 'NE', 'adjust_axes', 1, 'FontSize', 10, 'Color', 'k');
+  'position', 'NE', 'adjust_axes', 1, 'FontSize', 16, 'Color', 'k');
 
 % return
 
@@ -139,7 +139,7 @@ ylabel('# of intrinsic parameters per neuron')
 set(gca, 'XScale', 'log')
 set(gca, 'YScale', 'log')
 legend({'Neuro', 'CoSci'}, 'Location', 'NorthEastOutside')
-figlib.pretty('PlotBuffer', 0.2)
+figlib.pretty('FontSize', 24, 'PlotBuffer', 0.2)
 axis square
 
 % annotate with labels for each point
@@ -149,7 +149,7 @@ axis square
 %   cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', 'k');
 
 labelpoints(xdata, ydata, cellstr(num2str([1:length(xdata)]')), ...
-  'position', 'E', 'adjust_axes', 1, 'FontSize', 10, 'Color', 'k');
+  'position', 'E', 'adjust_axes', 1, 'FontSize', 16, 'Color', 'k');
 
 return
 
@@ -160,11 +160,11 @@ p(1) = scatter([neuro.nSynapticParams], [neuro.nIntrinsicParams] ./ [neuro.nNeur
 p(2) = scatter([cosci.nSynapticParams], [cosci.nIntrinsicParams ]./ [cosci.nNeurons]);
 p(1).Marker = 'none';
 p(2).Marker = 'none';
-figlib.pretty('PlotBuffer', 0.2)
+figlib.pretty('FontSize', 24, 'PlotBuffer', 0.2)
 text([neuro.nSynapticParams], [neuro.nIntrinsicParams] ./ [neuro.nNeurons], ...
-  cellstr(num2str([1:length(neuro)]')), 'FontSize', 10, 'Color', 'k');
+  cellstr(num2str([1:length(neuro)]')), 'FontSize', 16, 'Color', 'k');
 text([cosci.nSynapticParams], [cosci.nIntrinsicParams ]./ [cosci.nNeurons], ...
-  cellstr(num2str([1:length(cosci)]')), 'FontSize', 10, 'Color', 'r');
+  cellstr(num2str([1:length(cosci)]')), 'FontSize', 16, 'Color', 'r');
 xlabel('# of synaptic parameters')
 ylabel('# of intrinsic parameters per neuron')
 set(gca, 'XScale', 'log')
@@ -231,7 +231,7 @@ legend_names = {'Destexhe et al. 1994', ...
                 'He et al. 2015'};
 legend(legend_names, 'Location', 'NorthEastOutside')
 
-figlib.pretty('PlotBuffer', 0.2)
+figlib.pretty('FontSize', 24, 'PlotBuffer', 0.2)
 
 
 %% Plot pairwise scatter plots
@@ -247,7 +247,7 @@ figlib.pretty('PlotBuffer', 0.2)
 %   ylabel(paramNames(combns(ii, 2)));
 %   set(gca, 'YScale', 'log');
 %   set(gca, 'XScale', 'log');
-%   figlib.pretty('PlotBuffer', 0.1);
+%   figlib.pretty('FontSize', 24, 'PlotBuffer', 0.1);
 %   axis square
 % end
 
@@ -271,5 +271,5 @@ return
 %   set(gca, 'XScale', 'log');
 %   legend({'Neuro', 'CoSci'}, 'Location', 'best')
 %   axis square
-%   figlib.pretty('PlotBuffer', 0.1)
+%   figlib.pretty('FontSize', 24, 'PlotBuffer', 0.1)
 % end
