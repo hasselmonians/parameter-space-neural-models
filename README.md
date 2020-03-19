@@ -1,7 +1,13 @@
 # parameter-space-neural-models
 Exploring the parameter spaces of neural models
 
-See a PDF writeup [here](https://github.com/hasselmonians/parameter-space-neural-models/blob/master/review-paper/paper.pdf).
+These data were used in
+
+*The unexplored territory of neural models: Potential guides for exploring the function of metabotropic neuromodulation* by
+Michael Hasselmo, Andrew Alexander, Alec Hoyland, Jennifer C Robinson, Ausra Saudargiene, Holger Dannenberg
+(2020, in review at *Neuroscience*).
+
+See a PDF writeup of the meta-analysis [here](https://github.com/hasselmonians/parameter-space-neural-models/blob/master/review-paper/paper.pdf).
 
 ## Destexhe *et al.* 1994
 Reticular thalamus (RE) cells were connected with GABAergic synapses of the A or B subtypes.
